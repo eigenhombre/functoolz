@@ -211,3 +211,17 @@ def accumulate(f, seq):
     for elem in itertools.islice(seq, 1, None):
         result = f(result, elem)
         yield result
+
+
+def comp(a, b):
+    """
+    Composition of two functions.
+
+    FIXME: generalize to more than two arguments
+
+    >>> comp(lambda a: a * 2, lambda b: b + 4)(3)
+    14
+    """
+    def f(*args, **kwargs):
+        return a(b(*args, **kwargs))
+    return f
